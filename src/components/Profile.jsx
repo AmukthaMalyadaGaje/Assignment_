@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Profile = () => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Retrieve the username from localStorage
+    const storedUsername = localStorage.getItem("username");
+    setUsername(storedUsername || ""); // Fallback to an empty string if not found
+  }, []);
+
   return (
     <div className="flex p-3 justify-center h-3/4 ">
-      <div className="bg-white p-10  w-full max-w-md text-center">
+      <div className="bg-white p-10 w-full max-w-md text-center">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Welcome to the Admin Panel
+          Welcome, {username ? username : "User"}!
         </h1>
         <p className="text-gray-600 mb-6">
           This is your profile page where you can view and manage your account

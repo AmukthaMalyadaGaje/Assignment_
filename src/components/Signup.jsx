@@ -4,9 +4,15 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [username, setUsername] = useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (!username || !email || !password) {
+      setMessage("Please fill in all fields.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
@@ -16,15 +22,18 @@ const Signup = () => {
         body: JSON.stringify({
           email,
           password,
+          username,
         }),
       });
 
       const data = await response.json();
+      console.log("data", data);
 
       if (response.ok) {
         setMessage(data.message);
         setEmail("");
         setPassword("");
+        setUsername("");
       } else {
         throw new Error(data.message || "Error occurred during signup");
       }
@@ -34,11 +43,24 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center m-5 p-5 min-h-screen bg-gray-100">
+    <div className="flex justify-center m-5 p-5  bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-80">
         <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
-        {message && <p className="text-center text-red-500">{message}</p>}
+        {message && <p className="text-center text-green-500">{message}</p>}
         <form onSubmit={handleSignup}>
+          <div className="mb-4">
+            <label className="block text-gray-700" htmlFor="email">
+              Username
+            </label>
+            <input
+              className="border border-gray-300 p-2 w-full rounded"
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="email">
               Email

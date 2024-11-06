@@ -120,12 +120,10 @@ const EmployeeDetails = () => {
             >
               Unique ID
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Image
-            </th>
+
             <th
               onClick={() => handleSort("name")}
-              className="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="cursor-pointer px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
               Name
             </th>
@@ -138,13 +136,13 @@ const EmployeeDetails = () => {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Mobile No
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Designation
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Gender
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Course
             </th>
             <th
@@ -167,13 +165,13 @@ const EmployeeDetails = () => {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {employee.uniqueId}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              {/* <td className="px-6 py-4 whitespace-nowrap">
                 <img
                   src={employee.image}
                   alt={employee.name}
                   className="rounded-full w-10 h-10"
                 />
-              </td>
+              </td> */}
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {employee.name}
               </td>

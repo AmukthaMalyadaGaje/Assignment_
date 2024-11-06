@@ -27,9 +27,11 @@ const Login = () => {
       }
 
       const data = await response.json();
+      console.log("response", data);
 
       // Save token to localStorage
       localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.name);
 
       // Redirect to dashboard
       navigate("/dashboard");
